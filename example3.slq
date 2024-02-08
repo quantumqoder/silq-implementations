@@ -1,0 +1,22 @@
+def solve(k: !N) {
+    i := 0: uint[k];
+    for j in [0..k) {
+        i[j] := H(i[j]);
+    }
+    q := vector(2^k, 0: B);
+    q[i] = X(q[i]);
+    forget(i = λ(q: B^(2^k)) lifted {
+        i := 0: uint[k];
+        for j in [0..2^k) {
+            if q[j] {
+                i = j as uint[k];
+            }
+        }
+        return i;
+    }(q));
+    return q;
+}
+
+def main() {
+    return solve(2);
+}

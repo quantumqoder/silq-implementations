@@ -1,0 +1,17 @@
+def bernstein[n: !ℕ](func: 
+const 𝔹^n!→ qfree 𝔹): !𝔹^n {
+    cand := vector(n, false): 𝔹^n;
+    
+    for i in [0..n) {
+        cand[i] := H(cand[i]);
+    }
+    if func(cand) {
+        phase(π);
+    }
+    
+    for i in [0..n) {
+        cand[i] := H(cand[i]);
+    }
+    
+    return measure(cand)
+}

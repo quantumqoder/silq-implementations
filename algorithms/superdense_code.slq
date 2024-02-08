@@ -1,0 +1,22 @@
+import utilities;
+
+def superdense_code(b_1: !B, b_0: !B): !B^2 {
+    q_0 := 0: B;
+    q_1 := 0: B;
+    (q_0, q_1) := entangle(q_0, q_1);
+    if b_1 {
+        q_0 := X(q_0)
+    }
+    if b_0 {
+        q_0 := Z(q_0)
+    }
+    (m_0, m_1) := bell_measure(q_0, q_1);
+    return (m_0, m_1)
+}
+
+def main() {
+    for i in [0..4) {
+        b := i as !int[2];
+        print(superdense_code(b[1], b[0]))
+    }
+}

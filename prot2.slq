@@ -1,0 +1,14 @@
+import algorithms.utilities;
+import prot1;
+
+def main() {
+    for i in [0..4) {
+        q_0 := 0: B;
+        q_1 := 0: B;
+        b := i as !uint[2];
+        (q_0, q_1) := entangle(q_0, q_1);
+        m_0 := protocol(q_0, b[0]);
+        m_1 := protocol(q_1, b[1]);
+        print(b, m_0⊕m_1⊕b[0], m_0⊕m_1⊕b[1])
+    }
+}

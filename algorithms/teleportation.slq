@@ -1,0 +1,17 @@
+import utilities;
+
+def teleport(psi: B): B {
+    q_0 := 0: B;
+    q_1 := 0: B;
+    (q_0, q_1) := entangle(q_0, q_1);
+    (m_0, m_1) := bell_measure(psi, q_0);
+    print(m_0, m_1);
+    psi := pauli_correction(m_0, m_1, q_1);
+    return psi
+}
+
+def main() {
+    psi := 0: B;
+    psi := H(psi);
+    return teleport(psi)
+}

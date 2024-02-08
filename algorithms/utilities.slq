@@ -1,0 +1,25 @@
+def entangle(q_0: B, q_1: B): B×B {
+    q_0 := H(q_0);
+    if q_0 {
+        q_1 := X(q_1)
+    }
+    return (q_0, q_1)
+}
+
+def bell_measure(q_0: B, q_1: B): !B×!B {
+    if q_0 {
+        q_1 := X(q_1)
+    }
+    q_0 := H(q_0);
+    return (measure(q_0), measure(q_1))
+}
+
+def pauli_correction(m_0: !B, m_1: !B, psi: B): B {
+    if m_1 {
+        psi := X(psi)
+    }
+    if m_0 {
+        psi := Z(psi)
+    }
+    return psi
+}

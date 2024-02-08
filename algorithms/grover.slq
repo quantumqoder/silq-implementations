@@ -1,0 +1,27 @@
+def groverDiffusion[n: !N](cand: int[n]) mfree: int[n] {
+    for i in [0..n) {
+        cand[i] := H(cand[i])
+    }
+    if cand != 0 {
+        phase(π)
+    }
+    for i in [0..n) {
+        cand[i] := H(cand[i])
+    }
+    return cand
+}
+
+def grover[n: !N](func: const int[n] !-> qfree B) {
+    num_iter := ceil(sqrt(2)*π/4);
+    cand := 0: int[n];
+    for i in [0..n) {
+        cand[i] := H(cand[i])
+    }
+    for i in [0..num_iter) {
+        if func(cand) {
+            phase(π)
+        }
+        cand := groverDiffusion[n](cand)
+    }
+    return measure(cand)
+}

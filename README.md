@@ -1,0 +1,1 @@
+Silq is a strongly-typed, functional-styled programming language.

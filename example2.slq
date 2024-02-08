@@ -1,0 +1,11 @@
+def solve[n: !N](b: !B^n) {
+    x := H(0: B);
+    q := if x then b else (0: int[n]) as B^n;
+    forget(x = q[0]);
+    return q;
+}
+
+def main() {
+    x := (1: !int[1]) as !B^1;
+    return solve(x);
+}
